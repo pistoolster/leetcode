@@ -1,3 +1,5 @@
+leetcode/
+.idea/
 # Golang ingnore
 # Binaries for programs and plugins
 *.exe
