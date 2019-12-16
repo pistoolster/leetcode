@@ -37,29 +37,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        length = len(nums)
-        k = k % length
-
-        def cal_gcd(x, y):
-            if x < y:
-                x, y = y, x
-            if y == 0:
-                return x
-            return cal_gcd(y, x % y)
-
-        times = cal_gcd(length, k)
-        t = 0
-        while t < times:
-            start_index = current_index = t
-            tmp = nums[current_index]
-
-            while True:
-                next_index = (current_index + k) % length
-                nums[next_index], tmp = tmp, nums[next_index]
-                if next_index == start_index:
-                    break
-                current_index = next_index
-
-            t += 1
+        k = k % len(nums)
+        nums[:] = nums[-k:] + nums[:-k]     # 人生苦短，python是岸啊
 
 #leetcode submit region end(Prohibit modification and deletion)
