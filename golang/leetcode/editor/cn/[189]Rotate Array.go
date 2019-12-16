@@ -28,33 +28,20 @@
 package main
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func rotate(nums []int, k int)  {
-    length := len(nums)
-    k = k % length
-
-    times := calGcd(length, k)
-    for t:= 0; t < times; t ++ {
-    	startIndex, currentIndex := t, t
-    	tmp := nums[currentIndex]
-
-    	for {
-    		nextIndex := (currentIndex + k) % length
-    		nums[nextIndex], tmp = tmp, nums[nextIndex]
-    		if nextIndex == startIndex {
-    			break
-			}
-    		currentIndex = nextIndex
-		}
-	}
+func rotate(nums []int, k int) {
+	length := len(nums)
+	k = k % length
+	reverse(nums)
+	reverse(nums[:k])
+	reverse(nums[k:length - 1])
 }
 
-func calGcd(x , y int) int {
-	if x < y {
-		x, y = y, x
+func reverse(nums []int) {
+	start, end := 0, len(nums) - 1
+	for start < end {
+		nums[start], nums[end] = nums[end], nums[start]
+		start += 1
+		end -= 1
 	}
-	if y == 0 {
-		return x
-	}
-	return calGcd(y, x % y)
 }
 //leetcode submit region end(Prohibit modification and deletion)
