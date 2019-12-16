@@ -33,7 +33,7 @@ func rotate(nums []int, k int) {
 	k = k % length
 	reverse(nums)
 	reverse(nums[:k])
-	reverse(nums[k:length - 1])
+	reverse(nums[k:length])
 }
 
 func reverse(nums []int) {
